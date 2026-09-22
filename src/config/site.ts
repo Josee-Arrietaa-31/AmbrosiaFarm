@@ -25,8 +25,8 @@ export const SITE = {
   // PLACEHOLDER: URL de la página oficial de Facebook.
   facebookUrl: '',
 
-  // PLACEHOLDER: URL "embed" de Google Maps (Compartir > Insertar un mapa > copiar el src del iframe).
-  mapEmbedUrl: '',
+  mapEmbedUrl:
+    'https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d222.00265489515377!2d-84.43102560523566!3d10.331102882027695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d10.3311289!2d-84.4309565!4m3!3m2!1d10.3311283!2d-84.43095919999999!5e1!3m2!1ses!2scr!4v1790113989533!5m2!1ses!2scr',
 
   // PLACEHOLDER: endpoint del formulario (por ejemplo "https://formspree.io/f/xxxxxxx").
   // También puede definirse con la variable de entorno VITE_FORM_ENDPOINT.
