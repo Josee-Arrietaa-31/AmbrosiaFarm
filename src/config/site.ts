@@ -42,6 +42,7 @@ export const facebookHref = SITE.facebookUrl || '#contacto' // PLACEHOLDER
 export const NAV_ITEMS = [
   { id: 'inicio', label: 'Inicio' },
   { id: 'nosotros', label: 'Nosotros' },
+  { id: 'productos', label: 'Productos' },
   { id: 'servicios', label: 'Servicios' },
   { id: 'compromisos', label: 'Compromisos' },
   { id: 'galeria', label: 'Galería' },

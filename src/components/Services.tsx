@@ -3,7 +3,7 @@ import { Reveal } from './Reveal'
 
 export function Services() {
   return (
-    <section id="servicios" aria-labelledby="titulo-servicios" className="bg-white py-24 lg:py-32">
+    <section id="servicios" aria-labelledby="titulo-servicios" className="bg-niebla py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal className="max-w-2xl">
           <h2 id="titulo-servicios" className="font-display text-4xl font-extrabold tracking-tight text-bosque sm:text-5xl">

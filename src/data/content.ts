@@ -37,6 +37,39 @@ export const ABOUT = {
   ],
 } as const
 
+export const PRODUCTS = [
+  {
+    id: 'pina',
+    name: 'Piña',
+    scientificName: 'Ananas comosus',
+    text: 'Nuestro producto insignia: piña fresca de calidad de exportación a Estados Unidos y Europa.',
+    image: {
+      src: '/images/producto-pina.jpg',
+      alt: 'Piña fresca sobre fondo blanco',
+    },
+  },
+  {
+    id: 'chayote',
+    name: 'Chayote',
+    scientificName: 'Sechium edule',
+    text: 'Chayote fresco cultivado en la zona norte de Costa Rica, con el mismo cuidado que el resto de nuestra producción.',
+    image: {
+      src: '/images/producto-chayote.jpg',
+      alt: 'Chayotes frescos sobre fondo blanco',
+    },
+  },
+  {
+    id: 'yuca',
+    name: 'Yuca',
+    scientificName: 'Manihot esculenta',
+    text: 'Yuca fresca, un básico de la agricultura costarricense cultivado bajo buenas prácticas agrícolas.',
+    image: {
+      src: '/images/producto-yuca.jpg',
+      alt: 'Raíces de yuca frescas sobre fondo blanco',
+    },
+  },
+] as const
+
 export const SERVICES = [
   {
     id: 'plantacion',
