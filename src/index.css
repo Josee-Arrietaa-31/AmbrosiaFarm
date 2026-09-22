@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  /* Paleta Ambrosia: verde dominante, neutros verdosos y acento piña */
-  --color-bosque: #1e3a28;       /* verde profundo: nav, secciones oscuras, footer */
-  --color-bosque-900: #142a1c;
-  --color-hoja: #3d6b47;         /* verde medio: íconos, detalles */
-  --color-salvia: #dde5d8;       /* superficie clara verdosa */
-  --color-niebla: #f5f7f2;       /* fondo general */
-  --color-grafito: #28302a;      /* texto principal */
-  --color-piedra: #5c665e;       /* texto secundario */
-  --color-pina: #e3a62b;         /* acento cálido (amarillo piña) */
-  --color-pina-claro: #f0bf55;
+  /* Paleta Ambrosia: tomada del logo oficial (verde oliva, dorado, negro) */
+  --color-bosque: #2b3420;       /* verde oliva profundo: nav, secciones oscuras */
+  --color-bosque-900: #14150f;   /* negro cálido: footer, fondo del hero */
+  --color-hoja: #5c6b39;         /* verde oliva medio: íconos, detalles */
+  --color-salvia: #e3e2c8;       /* superficie clara verde-dorada */
+  --color-niebla: #f7f5ee;       /* fondo general cálido */
+  --color-grafito: #211f17;      /* texto principal */
+  --color-piedra: #635f4e;       /* texto secundario */
+  --color-pina: #c9a23c;         /* dorado del logo (acento principal) */
+  --color-pina-claro: #ddbb66;
 
-  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --font-sans: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 @layer base {

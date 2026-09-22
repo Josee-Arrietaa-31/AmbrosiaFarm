@@ -71,7 +71,7 @@ export const COMMITMENTS = [
   {
     id: 'ambiental',
     title: 'Ambiental',
-    text: 'Uso racional de los recursos naturales. Algunas de nuestras fincas cuentan con certificación Rainforest Alliance.',
+    text: 'Uso racional de los recursos naturales, con prácticas agrícolas responsables en cada etapa del cultivo.',
   },
   {
     id: 'social',
