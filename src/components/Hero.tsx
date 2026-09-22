@@ -40,7 +40,7 @@ export function Hero() {
         </motion.h1>
         <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <motion.p {...rise(0.5)} className="max-w-xl text-xl leading-relaxed text-white/90 sm:text-2xl">
-            Una empresa familiar costarricense que cultiva, empaca y exporta piña con calidad de exportación y respeto por la tierra.
+            Cultivamos con respeto por la tierra, empacamos con dedicación y compartimos con el mundo la frescura de Costa Rica.
           </motion.p>
           <motion.div {...rise(0.65)} className="flex flex-wrap gap-3">
             <a

@@ -12,8 +12,8 @@
   --color-pina: #c9a23c;         /* dorado del logo (acento principal) */
   --color-pina-claro: #ddbb66;
 
-  --font-display: "Fraunces", "Georgia", serif;
-  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Playfair Display", "Georgia", serif;
+  --font-sans: "Raleway", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
