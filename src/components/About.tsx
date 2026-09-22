@@ -25,7 +25,6 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1} className="lg:col-span-7">
-          {/* TODO: reemplazar por fotografía aérea real de la finca */}
           <img
             src={ABOUT.image.src}
             alt={ABOUT.image.alt}

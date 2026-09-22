@@ -4,14 +4,10 @@ import { Reveal } from './Reveal'
 
 const icons = { ambiental: Leaf, social: Users, calidad: Award, inocuidad: ShieldCheck } as const
 
-/**
- * Sellos de certificación.
- * TODO: reemplazar cada badge por el logo oficial (descargar desde el portal de cada
- * certificadora y respetar sus lineamientos de uso de marca).
- */
 const CERTIFICATIONS = [
-  { name: 'GlobalG.A.P.', detail: 'Buenas prácticas agrícolas' },
-  { name: 'Rainforest Alliance', detail: 'Agricultura sostenible' },
+  { name: 'GlobalG.A.P.', detail: 'Buenas prácticas agrícolas', logo: '/images/cert-globalgap.png' },
+  { name: 'FDA', detail: 'Instalaciones registradas para exportar a EE. UU.', logo: '/images/cert-fda.png' },
+  { name: 'Rainforest Alliance', detail: 'Agricultura sostenible', logo: null },
 ]
 
 export function Commitments() {
@@ -50,13 +46,16 @@ export function Commitments() {
                 key={cert.name}
                 className="flex min-w-[15rem] items-center gap-4 rounded-2xl bg-white px-5 py-4 text-bosque"
               >
-                {/* PLACEHOLDER: sustituir por <img src="/logos/..." alt="Logo de ..."> con el logo oficial */}
-                <span
-                  aria-hidden="true"
-                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-hoja/50 text-xs font-bold text-hoja"
-                >
-                  Logo
-                </span>
+                {cert.logo ? (
+                  <img src={cert.logo} alt={`Logo de ${cert.name}`} className="h-14 w-14 shrink-0 object-contain" />
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-hoja/50 text-xs font-bold text-hoja"
+                  >
+                    Logo
+                  </span>
+                )}
                 <span>
                   <span className="block font-display text-lg font-bold">{cert.name}</span>
                   <span className="block text-sm text-piedra">{cert.detail}</span>

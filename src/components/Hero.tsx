@@ -14,7 +14,6 @@ export function Hero() {
 
   return (
     <section id="inicio" aria-labelledby="titulo-inicio" className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-bosque-900">
-      {/* TODO: reemplazar por fotografía aérea real (WebP/AVIF ~2000px) */}
       <motion.img
         src={HERO_IMAGE.src}
         alt={HERO_IMAGE.alt}

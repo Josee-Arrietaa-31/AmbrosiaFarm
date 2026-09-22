@@ -24,7 +24,7 @@ export function Footer() {
     <footer className="bg-bosque-900 text-white/80">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-3 lg:px-8">
         <div>
-          <Logo light />
+          <Logo />
           <p className="mt-4 max-w-xs">
             {SITE.legalName}. Empresa familiar costarricense productora y exportadora de piña desde {SITE.foundedYear}.
           </p>

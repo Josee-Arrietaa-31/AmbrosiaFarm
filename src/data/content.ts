@@ -1,23 +1,21 @@
 /**
  * Contenido del sitio.
  *
- * IMÁGENES: todas las rutas bajo /images son ilustraciones de muestra (SVG).
- * Deben sustituirse por fotografías aéreas y de proceso reales de Ambrosia Farm,
- * idealmente en formato WebP/AVIF, ~2000 px de ancho para el hero y ~1400 px para el resto.
+ * IMÁGENES: todas las rutas bajo /images son fotografías reales de Ambrosia Farm.
  * Basta con reemplazar el archivo o cambiar `src` aquí; mantenga un `alt` descriptivo.
  */
 
 export type Img = { src: string; alt: string }
 
 export const HERO_IMAGE: Img = {
-  src: '/images/hero-plantacion.svg', // TODO: foto aérea real de la plantación
-  alt: 'Vista aérea de las hileras de piña en una finca de la zona norte de Costa Rica',
+  src: '/images/hero-plantacion.jpg',
+  alt: 'Trabajador lanzando una piña recién cortada al aire en una finca de la zona norte de Costa Rica',
 }
 
 export const ABOUT = {
   image: {
-    src: '/images/nosotros-finca.svg', // TODO: foto aérea real de la finca
-    alt: 'Vista aérea de una finca de piña rodeada de árboles en San Carlos',
+    src: '/images/nosotros-finca.jpg',
+    alt: 'Vista aérea de las fincas de piña junto a un río y zonas boscosas en San Carlos',
   } satisfies Img,
   mission:
     'Hacer que el uso racional y sostenible de los recursos naturales, económicos y humanos se traduzca en la excelencia del producto y la completa satisfacción del cliente.',
@@ -45,8 +43,8 @@ export const SERVICES = [
     title: 'Plantación',
     text: 'Cultivamos piña en fincas propias y junto a productores aliados de la zona norte, con buenas prácticas agrícolas y responsabilidad con el medio ambiente en cada etapa del cultivo.',
     image: {
-      src: '/images/servicio-plantacion.svg', // TODO: foto real del cultivo
-      alt: 'Hileras de plantas de piña vistas desde el aire',
+      src: '/images/servicio-plantacion.jpg',
+      alt: 'Trabajador cultivando hileras de piña en tierra volcánica de la zona norte',
     },
   },
   {
@@ -54,8 +52,8 @@ export const SERVICES = [
     title: 'Empaque y Producción',
     text: 'La fruta se selecciona, empaca y prepara bajo buenas prácticas de manufactura, para que cada caja cumpla con la calidad y la constancia que espera el comprador.',
     image: {
-      src: '/images/servicio-empaque.svg', // TODO: foto real de la planta de empaque
-      alt: 'Vista aérea de la planta de empaque y sus alrededores',
+      src: '/images/servicio-empaque.jpg',
+      alt: 'Piñas avanzando por la línea de empaque en la planta de producción',
     },
   },
   {
@@ -63,8 +61,8 @@ export const SERVICES = [
     title: 'Exportación',
     text: 'Enviamos contenedores de piña cada semana a Estados Unidos y Europa, con constancia en los volúmenes y el respaldo de una empresa con experiencia exportadora desde 2010.',
     image: {
-      src: '/images/servicio-exportacion.svg', // TODO: foto real de contenedores o carga
-      alt: 'Contenedores listos para exportación junto a las instalaciones',
+      src: '/images/servicio-exportacion.jpg',
+      alt: 'Caja de piñas Ambrosía Fresh lista para exportación, producto de Costa Rica',
     },
   },
 ] as const
@@ -93,12 +91,12 @@ export const COMMITMENTS = [
 ] as const
 
 export const GALLERY: Img[] = [
-  { src: '/images/galeria-campo-1.svg', alt: 'Plantación de piña vista desde el aire con camino interno' },
-  { src: '/images/galeria-instalaciones-1.svg', alt: 'Instalaciones de empaque y patio de carga' },
-  { src: '/images/galeria-campo-2.svg', alt: 'Hileras de piña en diagonal' },
-  { src: '/images/galeria-campo-3.svg', alt: 'Bloque de cultivo junto a un bosque' },
-  { src: '/images/galeria-campo-4.svg', alt: 'Detalle aéreo de las hileras de piña' },
-  { src: '/images/galeria-instalaciones-2.svg', alt: 'Techos de la planta de empaque vistos desde arriba' },
-  { src: '/images/galeria-campo-5.svg', alt: 'Campo de piña con distintos tonos de verde' },
-  { src: '/images/galeria-campo-6.svg', alt: 'Plantación y camino de acceso a la finca' },
-] // TODO: reemplazar por fotografías reales del campo, instalaciones y procesos
+  { src: '/images/galeria-1.jpg', alt: 'Plantación de piña a nivel de suelo con bosque al fondo' },
+  { src: '/images/galeria-2.jpg', alt: 'Vista aérea de las fincas de piña junto a un río' },
+  { src: '/images/galeria-3.jpg', alt: 'Vista aérea de los caminos internos de la finca' },
+  { src: '/images/galeria-4.jpg', alt: 'Hileras de piña con una caseta de trabajo al fondo' },
+  { src: '/images/galeria-5.jpg', alt: 'Detalle de una planta de piña desde abajo contra el cielo' },
+  { src: '/images/galeria-6.jpg', alt: 'Piña recién cosechada en mano junto a una pila de fruta' },
+  { src: '/images/galeria-7.jpg', alt: 'Piñas en la línea de empaque antes de ser procesadas' },
+  { src: '/images/galeria-8.jpg', alt: 'Detalle del corte de la corona con la herramienta de cosecha' },
+]

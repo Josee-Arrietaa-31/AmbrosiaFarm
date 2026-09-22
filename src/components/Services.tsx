@@ -20,7 +20,6 @@ export function Services() {
             <li key={s.id} className="grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
               <Reveal className={`lg:col-span-7 ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
                 <div className="group overflow-hidden rounded-[28px]">
-                  {/* TODO: reemplazar por fotografía real del servicio */}
                   <img
                     src={s.image.src}
                     alt={s.image.alt}
