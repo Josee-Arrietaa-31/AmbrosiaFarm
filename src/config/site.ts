@@ -19,11 +19,13 @@ export const SITE = {
     line2: 'Alajuela, Costa Rica',
   },
 
-  // PLACEHOLDER: número de WhatsApp en formato internacional sin "+" ni espacios (ej. "506XXXXXXXX").
-  whatsappNumber: '',
+  whatsappNumber: '50624610492',
 
-  // PLACEHOLDER: URL de la página oficial de Facebook.
-  facebookUrl: '',
+  facebookUrl: 'https://www.facebook.com/share/1DD7ASEho5/?mibextid=wwXIfr',
+  instagramUrl: 'https://www.instagram.com/ambrosiafreshcr',
+
+  // Enlace de Waze a la ubicación (Ruta 141 / C/ Central).
+  wazeUrl: 'https://waze.com/ul/hd1gfy8z0t',
 
   mapEmbedUrl:
     'https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d222.00265489515377!2d-84.43102560523566!3d10.331102882027695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d10.3311289!2d-84.4309565!4m3!3m2!1d10.3311283!2d-84.43095919999999!5e1!3m2!1ses!2scr!4v1790113989533!5m2!1ses!2scr',
@@ -38,6 +40,7 @@ export const whatsappHref = SITE.whatsappNumber
   : '#contacto' // PLACEHOLDER: sin número definido, el enlace lleva a la sección de contacto
 
 export const facebookHref = SITE.facebookUrl || '#contacto' // PLACEHOLDER
+export const instagramHref = SITE.instagramUrl || '#contacto' // PLACEHOLDER
 
 export const NAV_ITEMS = [
   { id: 'inicio', label: 'Inicio' },
@@ -53,6 +56,8 @@ if (import.meta.env.DEV) {
   const pending = Object.entries({
     whatsappNumber: SITE.whatsappNumber,
     facebookUrl: SITE.facebookUrl,
+    instagramUrl: SITE.instagramUrl,
+    wazeUrl: SITE.wazeUrl,
     mapEmbedUrl: SITE.mapEmbedUrl,
     formEndpoint: SITE.formEndpoint,
   })

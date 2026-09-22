@@ -1,4 +1,4 @@
-import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { Mail, MapPin, MessageCircle, Navigation, Phone } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { SITE, whatsappHref } from '../config/site'
@@ -106,6 +106,17 @@ export function Contact() {
                   <br />
                   {SITE.address.line2}
                 </address>
+                {SITE.wazeUrl && (
+                  <a
+                    href={SITE.wazeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1.5 font-semibold text-hoja underline-offset-4 hover:text-bosque hover:underline"
+                  >
+                    <Navigation aria-hidden="true" className="h-4 w-4" />
+                    Cómo llegar con Waze
+                  </a>
+                )}
               </div>
             </li>
           </ul>
