@@ -1,7 +1,8 @@
-import { Mail, MapPin, MessageCircle, Navigation, Phone } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { SITE, whatsappHref } from '../config/site'
+import { SITE, facebookHref, instagramHref } from '../config/site'
+import { Facebook, Instagram } from './BrandIcons'
 import { Reveal } from './Reveal'
 
 type FormValues = { nombre: string; correo: string; telefono?: string; mensaje: string }
@@ -83,21 +84,6 @@ export function Contact() {
               </div>
             </li>
             <li className="flex gap-4">
-              <MessageCircle aria-hidden="true" className="mt-1 h-6 w-6 shrink-0 text-hoja" />
-              <div>
-                <p className="font-semibold text-grafito">WhatsApp</p>
-                {/* PLACEHOLDER: definir SITE.whatsappNumber en src/config/site.ts */}
-                <a
-                  href={whatsappHref}
-                  target={SITE.whatsappNumber ? '_blank' : undefined}
-                  rel="noopener noreferrer"
-                  className="text-piedra underline-offset-4 hover:text-bosque hover:underline"
-                >
-                  {SITE.whatsappNumber ? 'Escríbanos por WhatsApp' : 'Número de WhatsApp pendiente'}
-                </a>
-              </div>
-            </li>
-            <li className="flex gap-4">
               <MapPin aria-hidden="true" className="mt-1 h-6 w-6 shrink-0 text-hoja" />
               <div>
                 <p className="font-semibold text-grafito">Ubicación</p>
@@ -106,20 +92,37 @@ export function Contact() {
                   <br />
                   {SITE.address.line2}
                 </address>
-                {SITE.wazeUrl && (
-                  <a
-                    href={SITE.wazeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center gap-1.5 font-semibold text-hoja underline-offset-4 hover:text-bosque hover:underline"
-                  >
-                    <Navigation aria-hidden="true" className="h-4 w-4" />
-                    Cómo llegar con Waze
-                  </a>
-                )}
               </div>
             </li>
           </ul>
+
+          <div className="mt-8">
+            <p className="font-semibold text-grafito">Síguenos</p>
+            <ul className="mt-3 flex gap-3">
+              <li>
+                <a
+                  href={facebookHref}
+                  aria-label="Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-salvia text-bosque transition hover:bg-pina hover:text-bosque-900"
+                >
+                  <Facebook aria-hidden="true" className="h-5 w-5" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={instagramHref}
+                  aria-label="Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-salvia text-bosque transition hover:bg-pina hover:text-bosque-900"
+                >
+                  <Instagram aria-hidden="true" className="h-5 w-5" />
+                </a>
+              </li>
+            </ul>
+          </div>
 
           <div className="mt-10 overflow-hidden rounded-2xl bg-salvia">
             {SITE.mapEmbedUrl ? (
