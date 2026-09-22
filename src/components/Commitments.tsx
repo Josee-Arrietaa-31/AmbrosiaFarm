@@ -11,7 +11,15 @@ const CERTIFICATIONS = [
 
 export function Commitments() {
   return (
-    <section id="compromisos" aria-labelledby="titulo-compromisos" className="relative overflow-hidden bg-bosque py-24 text-white lg:py-32">
+    <section id="compromisos" aria-labelledby="titulo-compromisos" className="relative overflow-hidden bg-bosque-900 py-24 text-white lg:py-32">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage:
+            'radial-gradient(ellipse 70% 60% at 85% -10%, color-mix(in oklab, var(--color-pina) 22%, transparent), transparent 60%), radial-gradient(ellipse 60% 50% at 0% 110%, color-mix(in oklab, var(--color-pina) 12%, transparent), transparent 60%)',
+        }}
+      />
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal className="max-w-2xl">
           <h2 id="titulo-compromisos" className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">

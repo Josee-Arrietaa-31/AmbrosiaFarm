@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  /* Paleta Ambrosia: tomada del logo oficial (verde oliva, dorado, negro) */
-  --color-bosque: #2b3420;       /* verde oliva profundo: nav, secciones oscuras */
-  --color-bosque-900: #14150f;   /* negro cálido: footer, fondo del hero */
-  --color-hoja: #5c6b39;         /* verde oliva medio: íconos, detalles */
-  --color-salvia: #e3e2c8;       /* superficie clara verde-dorada */
+  /* Paleta Ambrosia: negro y dorado, con el verde del logo reducido a un acento menor */
+  --color-bosque: #1a1712;       /* negro cálido: nav, secciones oscuras */
+  --color-bosque-900: #0b0a07;   /* negro profundo: footer, fondo del hero */
+  --color-hoja: #8a6a2e;         /* bronce dorado: íconos, detalles */
+  --color-salvia: #e3e2c8;       /* superficie clara dorada */
   --color-niebla: #f7f5ee;       /* fondo general cálido */
   --color-grafito: #211f17;      /* texto principal */
   --color-piedra: #635f4e;       /* texto secundario */
