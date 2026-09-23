@@ -5,8 +5,8 @@ import { Reveal } from './Reveal'
 const icons = { ambiental: Leaf, social: Users, calidad: Award, inocuidad: ShieldCheck } as const
 
 const CERTIFICATIONS = [
-  { name: 'GlobalG.A.P.', detail: 'Buenas prácticas agrícolas', logo: '/images/cert-globalgap.png' },
-  { name: 'FDA', detail: 'Instalaciones registradas para exportar a EE. UU.', logo: '/images/cert-fda.png' },
+  { name: 'GlobalG.A.P.', logo: '/images/cert-globalgap.png' },
+  { name: 'FDA', logo: '/images/cert-fda.png' },
 ]
 
 export function Commitments() {
@@ -46,18 +46,15 @@ export function Commitments() {
         </ul>
 
         <Reveal className="mt-20 flex flex-col gap-6 rounded-[28px] bg-white/5 p-8 ring-1 ring-white/10 md:flex-row md:items-center md:justify-between sm:p-10">
-          <h3 className="max-w-sm font-display text-2xl font-bold">Fincas certificadas</h3>
+          <h3 className="max-w-sm font-display text-2xl font-bold">Certificaciones</h3>
           <ul className="flex flex-wrap gap-4" aria-label="Certificaciones">
             {CERTIFICATIONS.map((cert) => (
               <li
                 key={cert.name}
-                className="flex min-w-[15rem] items-center gap-4 rounded-2xl bg-white px-5 py-4 text-bosque"
+                className="flex min-w-[12rem] items-center gap-3 rounded-2xl bg-white px-5 py-4 text-bosque"
               >
                 <img src={cert.logo} alt={`Logo de ${cert.name}`} className="h-14 w-14 shrink-0 object-contain" />
-                <span>
-                  <span className="block font-display text-lg font-bold">{cert.name}</span>
-                  <span className="block text-sm text-piedra">{cert.detail}</span>
-                </span>
+                <span className="font-display text-lg font-bold">{cert.name}</span>
               </li>
             ))}
           </ul>
