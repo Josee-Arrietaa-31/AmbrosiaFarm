@@ -20,6 +20,7 @@ export function WhatsAppButton() {
       aria-label="Escríbanos por WhatsApp"
       className="fixed bottom-5 right-5 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/25 transition hover:scale-105 hover:shadow-xl focus-visible:scale-105"
     >
+      <span aria-hidden="true" className="absolute inset-0 -z-10 animate-ping rounded-full bg-[#25D366] opacity-75 motion-reduce:hidden" />
       <WhatsAppIcon aria-hidden="true" className="h-7 w-7" />
     </a>
   )

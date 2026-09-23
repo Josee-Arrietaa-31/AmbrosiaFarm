@@ -1,8 +1,12 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import { HERO_IMAGE } from '../data/content'
 
 export function Hero() {
   const reduce = useReducedMotion()
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '8%'])
   const rise = (delay: number) =>
     reduce
       ? {}
@@ -13,15 +17,21 @@ export function Hero() {
         }
 
   return (
-    <section id="inicio" aria-labelledby="titulo-inicio" className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-bosque-900">
+    <section
+      ref={sectionRef}
+      id="inicio"
+      aria-labelledby="titulo-inicio"
+      className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-bosque-900"
+    >
       <motion.img
         src={HERO_IMAGE.src}
         alt={HERO_IMAGE.alt}
         fetchPriority="high"
         className="absolute inset-0 -z-10 h-full w-full object-cover"
         initial={reduce ? false : { scale: 1.08 }}
-        animate={{ scale: 1 }}
+        animate={{ scale: 1.2 }}
         transition={{ duration: 2.4, ease: 'easeOut' }}
+        style={reduce ? undefined : { y: parallaxY }}
       />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-bosque-900/95 via-bosque-900/45 to-black/10" />
 

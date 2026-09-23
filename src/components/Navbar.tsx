@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { NAV_ITEMS } from '../config/site'
@@ -48,16 +49,23 @@ export function Navbar() {
           {NAV_ITEMS.map((item) => {
             const isActive = active === item.id
             return (
-              <li key={item.id}>
+              <li key={item.id} className="relative">
                 <a
                   href={`#${item.id}`}
                   aria-current={isActive ? 'true' : undefined}
-                  className={`rounded-full px-4 py-2 text-[0.95rem] font-semibold transition-colors ${
+                  className={`block rounded-full px-4 py-2 text-[0.95rem] font-semibold transition-colors ${
                     isActive ? 'text-pina-claro' : 'text-white/85 hover:text-white'
                   }`}
                 >
                   {item.label}
                 </a>
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-pina-claro"
+                    transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                  />
+                )}
               </li>
             )
           })}

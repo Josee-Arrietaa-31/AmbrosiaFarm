@@ -31,21 +31,23 @@ export function Gallery() {
         <ul className="mt-12 grid grid-flow-row-dense auto-rows-[220px] grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           {GALLERY.map((img, i) => (
             <li key={img.src} className={spans[i % spans.length]}>
-              <button
-                type="button"
-                onClick={() => setIndex(i)}
-                aria-label={`Ampliar imagen: ${img.alt}`}
-                className="group relative block h-full w-full overflow-hidden rounded-2xl"
-              >
-                <img
-                  src={img.src}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                />
-                <span aria-hidden="true" className="absolute inset-0 bg-bosque/0 transition group-hover:bg-bosque/20" />
-              </button>
+              <Reveal delay={(i % 4) * 0.08} className="h-full">
+                <button
+                  type="button"
+                  onClick={() => setIndex(i)}
+                  aria-label={`Ampliar imagen: ${img.alt}`}
+                  className="group relative block h-full w-full overflow-hidden rounded-2xl"
+                >
+                  <img
+                    src={img.src}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <span aria-hidden="true" className="absolute inset-0 bg-bosque/0 transition group-hover:bg-bosque/20" />
+                </button>
+              </Reveal>
             </li>
           ))}
         </ul>
