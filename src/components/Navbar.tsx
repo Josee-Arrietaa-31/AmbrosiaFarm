@@ -41,7 +41,7 @@ export function Navbar() {
       }`}
     >
       <nav aria-label="Navegación principal" className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
-        <a href="#inicio" aria-label="Ambrosia Farm, ir al inicio" onClick={() => setOpen(false)}>
+        <a href="#inicio" aria-label="Ambrosía Fresh, ir al inicio" onClick={() => setOpen(false)}>
           <Logo />
         </a>
 

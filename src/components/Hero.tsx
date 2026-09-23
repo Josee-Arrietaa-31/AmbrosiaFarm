@@ -44,9 +44,9 @@ export function Hero() {
           id="titulo-inicio"
           className="font-display text-[clamp(3.6rem,13vw,11.5rem)] font-extrabold leading-[0.86] tracking-[-0.04em] text-white"
         >
-          Ambrosia
+          Ambrosía
           <br />
-          Farm
+          Fresh
         </motion.h1>
         <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <motion.p {...rise(0.5)} className="max-w-xl text-xl leading-relaxed text-white/90 sm:text-2xl">
@@ -57,7 +57,7 @@ export function Hero() {
               href="#servicios"
               className="inline-flex min-h-12 items-center rounded-full bg-pina px-7 text-lg font-bold text-bosque-900 transition hover:bg-pina-claro hover:shadow-lg hover:shadow-pina/30"
             >
-              Servicios
+              Procesos
             </a>
             <a
               href="#contacto"

@@ -6,7 +6,7 @@
 
 export const SITE = {
   legalName: 'Productos Hortícolas Norteños S.A.',
-  brand: 'Ambrosia Farm',
+  brand: 'Ambrosía Fresh',
   foundedYear: 2010,
 
   phone: {
@@ -43,7 +43,7 @@ export const NAV_ITEMS = [
   { id: 'inicio', label: 'Inicio' },
   { id: 'nosotros', label: 'Nosotros' },
   { id: 'productos', label: 'Productos' },
-  { id: 'servicios', label: 'Servicios' },
+  { id: 'servicios', label: 'Procesos' },
   { id: 'compromisos', label: 'Compromisos' },
   { id: 'galeria', label: 'Galería' },
   { id: 'contacto', label: 'Contacto' },
@@ -60,6 +60,6 @@ if (import.meta.env.DEV) {
     .filter(([, v]) => !v)
     .map(([k]) => k)
   if (pending.length) {
-    console.warn(`[Ambrosia Farm] Placeholders pendientes en src/config/site.ts: ${pending.join(', ')}`)
+    console.warn(`[Ambrosía Fresh] Placeholders pendientes en src/config/site.ts: ${pending.join(', ')}`)
   }
 }

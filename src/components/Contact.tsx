@@ -127,7 +127,7 @@ export function Contact() {
           <div className="mt-10 overflow-hidden rounded-2xl bg-salvia">
             {SITE.mapEmbedUrl ? (
               <iframe
-                title="Mapa de la ubicación de Ambrosia Farm"
+                title="Mapa de la ubicación de Ambrosía Fresh"
                 src={SITE.mapEmbedUrl}
                 className="h-64 w-full border-0"
                 loading="lazy"

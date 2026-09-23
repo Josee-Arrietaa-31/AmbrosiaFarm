@@ -1,6 +1,6 @@
-# Ambrosia Farm: sitio corporativo
+# Ambrosía Fresh: sitio corporativo
 
-Sitio de una sola página para Ambrosia Farm (Productos Hortícolas Norteños S.A.), hecho con React, TypeScript y Tailwind CSS v4.
+Sitio de una sola página para Ambrosía Fresh (Productos Hortícolas Norteños S.A.), hecho con React, TypeScript y Tailwind CSS v4.
 
 ## Cómo correrlo
 

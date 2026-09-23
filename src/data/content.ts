@@ -1,7 +1,7 @@
 /**
  * Contenido del sitio.
  *
- * IMÁGENES: todas las rutas bajo /images son fotografías reales de Ambrosia Farm.
+ * IMÁGENES: todas las rutas bajo /images son fotografías reales de Ambrosía Fresh.
  * Basta con reemplazar el archivo o cambiar `src` aquí; mantenga un `alt` descriptivo.
  */
 

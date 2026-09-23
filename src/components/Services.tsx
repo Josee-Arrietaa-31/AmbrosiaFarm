@@ -7,7 +7,7 @@ export function Services() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal className="max-w-2xl">
           <h2 id="titulo-servicios" className="font-display text-4xl font-extrabold tracking-tight text-bosque sm:text-5xl">
-            Servicios
+            Procesos
           </h2>
           <p className="mt-5 text-xl text-piedra">
             Acompañamos la piña en todo su recorrido: desde la siembra en la zona norte hasta el contenedor que llega a su destino.
