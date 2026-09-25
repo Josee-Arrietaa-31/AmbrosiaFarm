@@ -40,7 +40,7 @@ export function Navbar() {
         solid ? 'bg-bosque/95 shadow-lg shadow-black/10 backdrop-blur' : 'bg-gradient-to-b from-black/45 to-transparent'
       }`}
     >
-      <nav aria-label="Navegación principal" className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
+      <nav aria-label="Navegación principal" className="mx-auto flex h-24 max-w-7xl items-center justify-between px-5 lg:px-8">
         <a href="#inicio" aria-label="Ambrosía Fresh, ir al inicio" onClick={() => setOpen(false)}>
           <Logo />
         </a>

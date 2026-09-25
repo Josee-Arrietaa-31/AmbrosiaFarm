@@ -19,7 +19,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem; /* compensa la navegación fija */
+    scroll-padding-top: 6rem; /* compensa la navegación fija */
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
