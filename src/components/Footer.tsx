@@ -1,9 +1,11 @@
 import { MessageCircle } from 'lucide-react'
-import { NAV_ITEMS, SITE, facebookHref, instagramHref, whatsappHref } from '../config/site'
+import { NAV_IDS, SITE, facebookHref, instagramHref, whatsappHref } from '../config/site'
+import { useLang } from '../i18n/useLang'
 import { Facebook, Instagram } from './BrandIcons'
 import { Logo } from './Logo'
 
 export function Footer() {
+  const { t } = useLang()
   const year = new Date().getFullYear()
   const social = [
     { label: 'Facebook', href: facebookHref, Icon: Facebook, external: !!SITE.facebookUrl },
@@ -17,7 +19,7 @@ export function Footer() {
         <div>
           <Logo />
           <p className="mt-4 max-w-xs">
-            {SITE.legalName}. Empresa familiar costarricense productora y exportadora de piña desde {SITE.foundedYear}.
+            {t.footer.about(SITE.legalName, SITE.foundedYear)}
           </p>
           <ul className="mt-6 flex gap-3">
             {social.map(({ label, href, Icon, external }) => (
@@ -36,13 +38,13 @@ export function Footer() {
           </ul>
         </div>
 
-        <nav aria-label="Secciones del sitio">
-          <p className="font-display text-lg font-bold text-white">Secciones</p>
+        <nav aria-label={t.footer.sectionsLabel}>
+          <p className="font-display text-lg font-bold text-white">{t.footer.sections}</p>
           <ul className="mt-4 grid grid-cols-2 gap-y-2">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.id}>
-                <a href={`#${item.id}`} className="hover:text-pina-claro">
-                  {item.label}
+            {NAV_IDS.map((id) => (
+              <li key={id}>
+                <a href={`#${id}`} className="hover:text-pina-claro">
+                  {t.nav.items[id]}
                 </a>
               </li>
             ))}
@@ -50,7 +52,7 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="font-display text-lg font-bold text-white">Contacto</p>
+          <p className="font-display text-lg font-bold text-white">{t.footer.contact}</p>
           <address className="mt-4 space-y-2 not-italic">
             <p>
               {SITE.address.line1}, {SITE.address.line2}

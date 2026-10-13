@@ -3,21 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ambrosía Fresh | Piña costarricense de exportación</title>
     <meta
       name="description"
       content="Ambrosía Fresh: empresa familiar costarricense que produce y exporta piña a Estados Unidos y Europa desde 2010."
     />
     <meta name="theme-color" content="#1a1712" />
-    <!-- TODO: reemplazar por el favicon/logo real de Ambrosía Fresh -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍍</text></svg>" />
+    <link rel="alternate" hreflang="es" href="https://ambrosiafarmcr.com/" />
+    <link rel="alternate" hreflang="en" href="https://ambrosiafarmcr.com/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://ambrosiafarmcr.com/" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Vista previa al compartir el enlace (WhatsApp, Facebook, LinkedIn, X) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ambrosía Fresh" />
+    <meta property="og:url" content="https://ambrosiafarmcr.com/" />
+    <meta property="og:title" content="Ambrosía Fresh | Piña costarricense de exportación" />
+    <meta
+      property="og:description"
+      content="Empresa familiar costarricense que produce y exporta piña a Estados Unidos y Europa desde 2010."
+    />
+    <meta property="og:image" content="https://ambrosiafarmcr.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Logo de Ambrosía Fresh sobre una plantación de piña en San Carlos, Costa Rica" />
+    <meta property="og:locale" content="es_CR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Datos de la empresa para Google -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ambrosía Fresh",
+        "legalName": "Productos Hortícolas Norteños S.A.",
+        "url": "https://ambrosiafarmcr.com/",
+        "logo": "https://ambrosiafarmcr.com/icon-512.png",
+        "image": "https://ambrosiafarmcr.com/og-image.jpg",
+        "foundingDate": "2010",
+        "email": "administracion@phnorte.com",
+        "telephone": "+506 2461-0492",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "San Antonio de Quesada, San Carlos",
+          "addressRegion": "Alajuela",
+          "addressCountry": "CR"
+        },
+        "sameAs": ["https://www.instagram.com/ambrosiafreshcr"]
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Raleway:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" href="/images/hero-plantacion.jpg" />
-    <title>Ambrosía Fresh | Piña costarricense de exportación</title>
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero-plantacion.webp"
+      imagesrcset="/images/hero-plantacion-800.webp 800w, /images/hero-plantacion.webp 1400w"
+      imagesizes="100vw"
+    />
   </head>
   <body>
     <div id="root"></div>

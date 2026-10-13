@@ -1,5 +1,6 @@
 import type { SVGProps } from 'react'
 import { SITE, whatsappHref } from '../config/site'
+import { useLang } from '../i18n/useLang'
 
 function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -10,6 +11,7 @@ function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 export function WhatsAppButton() {
+  const { t } = useLang()
   if (!SITE.whatsappNumber) return null
 
   return (
@@ -17,7 +19,7 @@ export function WhatsAppButton() {
       href={whatsappHref}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Escríbanos por WhatsApp"
+      aria-label={t.whatsapp}
       className="fixed bottom-5 right-5 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/25 transition hover:scale-105 hover:shadow-xl focus-visible:scale-105"
     >
       <span aria-hidden="true" className="absolute inset-0 -z-10 animate-ping rounded-full bg-[#25D366] opacity-75 motion-reduce:hidden" />

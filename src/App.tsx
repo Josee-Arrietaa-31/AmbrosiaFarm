@@ -9,15 +9,18 @@ import { Navbar } from './components/Navbar'
 import { Products } from './components/Products'
 import { Services } from './components/Services'
 import { WhatsAppButton } from './components/WhatsAppButton'
+import { useLang } from './i18n/useLang'
 
 export default function App() {
+  const { t } = useLang()
+
   return (
     <MotionConfig reducedMotion="user">
       <a
         href="#contenido"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-pina focus:px-5 focus:py-3 focus:font-bold focus:text-bosque-900"
       >
-        Ir al contenido
+        {t.skipLink}
       </a>
       <Navbar />
       <main id="contenido">

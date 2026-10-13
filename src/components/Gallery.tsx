@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { GALLERY } from '../data/content'
+import { useLang } from '../i18n/useLang'
 import { Lightbox } from './Lightbox'
 import { Reveal } from './Reveal'
 
@@ -16,30 +17,34 @@ const spans = [
 ]
 
 export function Gallery() {
+  const { t } = useLang()
   const [index, setIndex] = useState<number | null>(null)
+  const images = GALLERY.map((img, i) => ({ ...img, alt: t.gallery.alts[i] }))
 
   return (
     <section id="galeria" aria-labelledby="titulo-galeria" className="bg-niebla py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <h2 id="titulo-galeria" className="font-display text-4xl font-extrabold tracking-tight text-bosque sm:text-5xl">
-            Galería
+            {t.gallery.title}
           </h2>
-          <p className="max-w-md text-lg text-piedra">Nuestras fincas, instalaciones y procesos, vistos de cerca y desde el aire.</p>
+          <p className="max-w-md text-lg text-piedra">{t.gallery.lead}</p>
         </Reveal>
 
         <ul className="mt-12 grid grid-flow-row-dense auto-rows-[220px] grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-          {GALLERY.map((img, i) => (
+          {images.map((img, i) => (
             <li key={img.src} className={spans[i % spans.length]}>
               <Reveal delay={(i % 4) * 0.08} className="h-full">
                 <button
                   type="button"
                   onClick={() => setIndex(i)}
-                  aria-label={`Ampliar imagen: ${img.alt}`}
+                  aria-label={t.gallery.enlarge(img.alt)}
                   className="group relative block h-full w-full overflow-hidden rounded-2xl"
                 >
                   <img
                     src={img.src}
+                    srcSet={img.srcSet}
+                    sizes="(min-width: 1024px) 300px, (min-width: 640px) 50vw, 100vw"
                     alt=""
                     loading="lazy"
                     decoding="async"
@@ -53,7 +58,7 @@ export function Gallery() {
         </ul>
       </div>
 
-      <Lightbox images={GALLERY} index={index} onClose={() => setIndex(null)} onChange={setIndex} />
+      <Lightbox images={images} index={index} onClose={() => setIndex(null)} onChange={setIndex} />
     </section>
   )
 }

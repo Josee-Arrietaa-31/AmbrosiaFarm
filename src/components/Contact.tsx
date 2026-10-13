@@ -1,7 +1,9 @@
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { ExternalLink, Mail, MapPin, Phone } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { SITE, facebookHref, instagramHref } from '../config/site'
+import { useLang } from '../i18n/useLang'
+import type { Dict } from '../i18n/es'
 import { Facebook, Instagram } from './BrandIcons'
 import { Reveal } from './Reveal'
 
@@ -12,7 +14,7 @@ type Status = 'idle' | 'sending' | 'success' | 'error'
 const inputBase =
   'mt-2 block w-full rounded-xl border bg-white px-4 py-3 text-lg text-grafito placeholder:text-piedra/60 transition focus:outline-none focus:ring-4 focus:ring-pina/35'
 
-async function sendForm(data: FormValues) {
+async function sendForm(data: FormValues, t: Dict['contact']) {
   if (!SITE.formEndpoint) {
     if (import.meta.env.DEV) {
       // PLACEHOLDER: sin endpoint configurado, en desarrollo se simula el envío.
@@ -20,7 +22,7 @@ async function sendForm(data: FormValues) {
       await new Promise((r) => setTimeout(r, 700))
       return
     }
-    throw new Error('El formulario aún no tiene un servicio de envío configurado.')
+    throw new Error(t.errorNoEndpoint)
   }
   const post = () =>
     fetch(SITE.formEndpoint, {
@@ -38,10 +40,12 @@ async function sendForm(data: FormValues) {
       res = await post()
     }
   }
-  if (!res.ok) throw new Error(`El servidor respondió con el código ${res.status}.`)
+  if (!res.ok) throw new Error(t.errorStatus(res.status))
 }
 
 export function Contact() {
+  const { lang, t: dict } = useLang()
+  const t = dict.contact
   const [status, setStatus] = useState<Status>('idle')
   const [errorDetail, setErrorDetail] = useState('')
   const {
@@ -54,7 +58,7 @@ export function Contact() {
   const onSubmit = async (data: FormValues) => {
     setStatus('sending')
     try {
-      await sendForm(data)
+      await sendForm(data, t)
       setStatus('success')
       reset()
     } catch (err) {
@@ -70,17 +74,17 @@ export function Contact() {
       <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-12 lg:gap-20 lg:px-8">
         <Reveal className="lg:col-span-5">
           <h2 id="titulo-contacto" className="font-display text-4xl font-extrabold tracking-tight text-bosque sm:text-5xl">
-            Contacto
+            {t.title}
           </h2>
           <p className="mt-5 text-xl text-piedra">
-            Cuéntenos qué necesita. Será un gusto atenderle y conversar sobre su próximo pedido.
+            {t.lead}
           </p>
 
           <ul className="mt-10 space-y-6 text-lg">
             <li className="flex gap-4">
               <Phone aria-hidden="true" className="mt-1 h-6 w-6 shrink-0 text-hoja" />
               <div>
-                <p className="font-semibold text-grafito">Teléfono</p>
+                <p className="font-semibold text-grafito">{t.phone}</p>
                 <a href={SITE.phone.href} className="text-piedra underline-offset-4 hover:text-bosque hover:underline">
                   {SITE.phone.display}
                 </a>
@@ -89,7 +93,7 @@ export function Contact() {
             <li className="flex gap-4">
               <Mail aria-hidden="true" className="mt-1 h-6 w-6 shrink-0 text-hoja" />
               <div>
-                <p className="font-semibold text-grafito">Correo</p>
+                <p className="font-semibold text-grafito">{t.email}</p>
                 <a href={`mailto:${SITE.email}`} className="break-all text-piedra underline-offset-4 hover:text-bosque hover:underline">
                   {SITE.email}
                 </a>
@@ -98,7 +102,7 @@ export function Contact() {
             <li className="flex gap-4">
               <MapPin aria-hidden="true" className="mt-1 h-6 w-6 shrink-0 text-hoja" />
               <div>
-                <p className="font-semibold text-grafito">Ubicación</p>
+                <p className="font-semibold text-grafito">{t.location}</p>
                 <address className="not-italic text-piedra">
                   {SITE.address.line1}
                   <br />
@@ -109,7 +113,7 @@ export function Contact() {
           </ul>
 
           <div className="mt-8">
-            <p className="font-semibold text-grafito">Síguenos</p>
+            <p className="font-semibold text-grafito">{t.follow}</p>
             <ul className="mt-3 flex gap-3">
               <li>
                 <a
@@ -136,22 +140,24 @@ export function Contact() {
             </ul>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-2xl bg-salvia">
-            {SITE.mapEmbedUrl ? (
-              <iframe
-                title="Mapa de la ubicación de Ambrosía Fresh"
-                src={SITE.mapEmbedUrl}
-                className="h-64 w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            ) : (
-              // PLACEHOLDER: colocar la URL de Google Maps en SITE.mapEmbedUrl
-              <div className="flex h-48 items-center justify-center p-6 text-center text-piedra">
-                Mapa pendiente: agregue la URL de Google Maps en la configuración del sitio.
-              </div>
-            )}
+          <div className="mt-10 overflow-hidden rounded-2xl bg-salvia shadow-xl shadow-bosque/10 ring-1 ring-salvia">
+            <iframe
+              title={t.mapTitle}
+              src={SITE.mapEmbedUrl.replaceAll('{lang}', lang)}
+              className="h-72 w-full border-0"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
           </div>
+          <a
+            href={SITE.mapDirectionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex min-h-12 items-center gap-2 rounded-full bg-bosque px-6 font-bold text-white transition hover:bg-hoja"
+          >
+            {t.directions}
+            <ExternalLink aria-hidden="true" className="h-4 w-4" />
+          </a>
         </Reveal>
 
         <Reveal delay={0.1} className="lg:col-span-7">
@@ -161,15 +167,15 @@ export function Contact() {
             className="rounded-[28px] bg-niebla p-6 ring-1 ring-salvia sm:p-10"
             aria-describedby="nota-obligatorios"
           >
-            <h3 className="font-display text-2xl font-bold text-bosque">Envíenos un mensaje</h3>
+            <h3 className="font-display text-2xl font-bold text-bosque">{t.formTitle}</h3>
             <p id="nota-obligatorios" className="mt-2 text-piedra">
-              Los campos marcados con * son obligatorios.
+              {t.required}
             </p>
 
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label htmlFor="nombre" className="font-semibold">
-                  Nombre *
+                  {t.name} *
                 </label>
                 <input
                   id="nombre"
@@ -178,7 +184,7 @@ export function Contact() {
                   aria-invalid={!!errors.nombre}
                   aria-describedby={errors.nombre ? 'error-nombre' : undefined}
                   className={`${inputBase} ${border(!!errors.nombre)}`}
-                  {...register('nombre', { required: 'Escriba su nombre.' })}
+                  {...register('nombre', { required: t.nameError })}
                 />
                 {errors.nombre && (
                   <p id="error-nombre" role="alert" className="mt-2 text-red-700">
@@ -189,7 +195,7 @@ export function Contact() {
 
               <div>
                 <label htmlFor="correo" className="font-semibold">
-                  Correo electrónico *
+                  {t.emailLabel} *
                 </label>
                 <input
                   id="correo"
@@ -199,8 +205,8 @@ export function Contact() {
                   aria-describedby={errors.correo ? 'error-correo' : undefined}
                   className={`${inputBase} ${border(!!errors.correo)}`}
                   {...register('correo', {
-                    required: 'Escriba su correo electrónico.',
-                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Revise el formato del correo, por ejemplo nombre@empresa.com.' },
+                    required: t.emailError,
+                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: t.emailFormat },
                   })}
                 />
                 {errors.correo && (
@@ -212,7 +218,7 @@ export function Contact() {
 
               <div>
                 <label htmlFor="telefono" className="font-semibold">
-                  Teléfono <span className="font-normal text-piedra">(opcional)</span>
+                  {t.phoneLabel} <span className="font-normal text-piedra">{t.optional}</span>
                 </label>
                 <input
                   id="telefono"
@@ -225,7 +231,7 @@ export function Contact() {
 
               <div className="sm:col-span-2">
                 <label htmlFor="mensaje" className="font-semibold">
-                  Mensaje *
+                  {t.message} *
                 </label>
                 <textarea
                   id="mensaje"
@@ -234,8 +240,8 @@ export function Contact() {
                   aria-describedby={errors.mensaje ? 'error-mensaje' : undefined}
                   className={`${inputBase} ${border(!!errors.mensaje)} resize-y`}
                   {...register('mensaje', {
-                    required: 'Escriba su mensaje.',
-                    minLength: { value: 10, message: 'El mensaje debe tener al menos 10 caracteres.' },
+                    required: t.messageError,
+                    minLength: { value: 10, message: t.messageShort },
                   })}
                 />
                 {errors.mensaje && (
@@ -247,7 +253,7 @@ export function Contact() {
             </div>
 
             <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
-              <label htmlFor="sitio">No llene este campo</label>
+              <label htmlFor="sitio">{t.honeypot}</label>
               <input id="sitio" type="text" tabIndex={-1} autoComplete="off" {...register('sitio')} />
             </div>
 
@@ -256,22 +262,22 @@ export function Contact() {
               disabled={status === 'sending'}
               className="mt-8 inline-flex min-h-13 w-full items-center justify-center rounded-full bg-pina px-8 text-lg font-bold text-bosque-900 transition hover:bg-pina-claro hover:shadow-lg hover:shadow-pina/30 disabled:cursor-wait disabled:opacity-70 sm:w-auto"
             >
-              {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
+              {status === 'sending' ? t.sending : t.send}
             </button>
 
             <div aria-live="polite" className="mt-5">
               {status === 'success' && (
                 <p className="rounded-xl bg-hoja/10 px-4 py-3 font-semibold text-bosque">
-                  Mensaje enviado. Le responderemos a la brevedad.
+                  {t.success}
                 </p>
               )}
               {status === 'error' && (
                 <p className="rounded-xl bg-red-50 px-4 py-3 text-red-800">
-                  No se pudo enviar el mensaje. {errorDetail} Puede escribirnos a{' '}
+                  {t.errorIntro} {errorDetail} {t.errorWrite}{' '}
                   <a href={`mailto:${SITE.email}`} className="font-semibold underline">
                     {SITE.email}
                   </a>{' '}
-                  o llamar al {SITE.phone.display}.
+                  {t.errorCall} {SITE.phone.display}.
                 </p>
               )}
             </div>

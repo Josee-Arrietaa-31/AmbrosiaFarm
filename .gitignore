@@ -30,4 +30,4 @@ dist-ssr
 .env*
 
 # Paquete para subir al cPanel
-ambrosia-cpanel.zip
+ambrosia-cpanel*.zip

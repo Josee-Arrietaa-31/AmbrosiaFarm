@@ -24,8 +24,10 @@ export const SITE = {
   facebookUrl: 'https://www.facebook.com/share/1DD7ASEho5/?mibextid=wwXIfr',
   instagramUrl: 'https://www.instagram.com/ambrosiafreshcr',
 
+  // Vista satelital de Google Maps. `{lang}` se reemplaza por el idioma de la página (es / en).
   mapEmbedUrl:
-    'https://www.google.com/maps/embed?pb=!4v1791822424044!6m8!1m7!1ssZyHN4NOiedkfKXns4NYFQ!2m2!1d10.3311028820277!2d-84.4308646727193!3f271.5593077812105!4f-0.48128178548383005!5f0.7820865974627469',
+    'https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d290.99927873917767!2d-84.43118695253189!3d10.33097837562658!3m2!1i1024!2i768!4f13.1!5e1!3m2!1s{lang}!2scr!4v1791934768448!5m2!1s{lang}!2scr',
+  mapDirectionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=10.330978,-84.431187',
 
   // En producción el formulario lo procesa public/contacto.php en el cPanel (Vite no ejecuta PHP,
   // así que en desarrollo se simula el envío). Se puede cambiar con la variable VITE_FORM_ENDPOINT.
@@ -40,15 +42,8 @@ export const whatsappHref = SITE.whatsappNumber
 export const facebookHref = SITE.facebookUrl || '#contacto' // PLACEHOLDER
 export const instagramHref = SITE.instagramUrl || '#contacto' // PLACEHOLDER
 
-export const NAV_ITEMS = [
-  { id: 'inicio', label: 'Inicio' },
-  { id: 'nosotros', label: 'Nosotros' },
-  { id: 'productos', label: 'Productos' },
-  { id: 'servicios', label: 'Procesos' },
-  { id: 'compromisos', label: 'Compromisos' },
-  { id: 'galeria', label: 'Galería' },
-  { id: 'contacto', label: 'Contacto' },
-] as const
+/** Secciones del menú, en orden. Los nombres visibles están en `nav.items` de src/i18n. */
+export const NAV_IDS = ['inicio', 'nosotros', 'productos', 'servicios', 'compromisos', 'galeria', 'contacto'] as const
 
 if (import.meta.env.DEV) {
   const pending = Object.entries({

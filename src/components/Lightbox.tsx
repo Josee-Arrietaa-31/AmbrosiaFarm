@@ -1,7 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useEffect, useRef } from 'react'
-import type { Img } from '../data/content'
+import { useLang } from '../i18n/useLang'
+
+type Img = { src: string; alt: string }
 
 type Props = {
   images: Img[]
@@ -11,6 +13,7 @@ type Props = {
 }
 
 export function Lightbox({ images, index, onClose, onChange }: Props) {
+  const { t } = useLang()
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
   const open = index !== null
@@ -65,7 +68,7 @@ export function Lightbox({ images, index, onClose, onChange }: Props) {
           ref={dialogRef}
           role="dialog"
           aria-modal="true"
-          aria-label={`Imagen ${index + 1} de ${count}`}
+          aria-label={t.lightbox.label(index + 1, count)}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 sm:p-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -94,7 +97,7 @@ export function Lightbox({ images, index, onClose, onChange }: Props) {
             ref={closeRef}
             type="button"
             onClick={onClose}
-            aria-label="Cerrar galería"
+            aria-label={t.lightbox.close}
             className="absolute right-4 top-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/25"
           >
             <X aria-hidden="true" />
@@ -102,7 +105,7 @@ export function Lightbox({ images, index, onClose, onChange }: Props) {
           <button
             type="button"
             onClick={prev}
-            aria-label="Imagen anterior"
+            aria-label={t.lightbox.prev}
             className="absolute left-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/25 sm:left-6"
           >
             <ChevronLeft aria-hidden="true" />
@@ -110,7 +113,7 @@ export function Lightbox({ images, index, onClose, onChange }: Props) {
           <button
             type="button"
             onClick={next}
-            aria-label="Imagen siguiente"
+            aria-label={t.lightbox.next}
             className="absolute right-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/25 sm:right-6"
           >
             <ChevronRight aria-hidden="true" />

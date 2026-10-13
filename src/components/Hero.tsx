@@ -1,8 +1,10 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { HERO_IMAGE } from '../data/content'
+import { useLang } from '../i18n/useLang'
 
 export function Hero() {
+  const { t } = useLang()
   const reduce = useReducedMotion()
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
@@ -25,7 +27,9 @@ export function Hero() {
     >
       <motion.img
         src={HERO_IMAGE.src}
-        alt={HERO_IMAGE.alt}
+        srcSet={HERO_IMAGE.srcSet}
+        sizes="100vw"
+        alt={t.hero.imageAlt}
         fetchPriority="high"
         className="absolute inset-0 -z-10 h-full w-full object-cover"
         initial={reduce ? false : { scale: 1.08 }}
@@ -37,7 +41,7 @@ export function Hero() {
 
       <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-32 sm:pb-20 lg:px-8 lg:pb-24">
         <motion.p {...rise(0.15)} className="mb-4 max-w-md text-lg text-white/85">
-          San Carlos, Costa Rica. Desde 2010.
+          {t.hero.kicker}
         </motion.p>
         <motion.h1
           {...rise(0.3)}
@@ -50,20 +54,20 @@ export function Hero() {
         </motion.h1>
         <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <motion.p {...rise(0.5)} className="max-w-xl text-xl leading-relaxed text-white/90 sm:text-2xl">
-            Cultivamos con respeto por la tierra, empacamos con dedicación y compartimos con el mundo la frescura de Costa Rica.
+            {t.hero.lead}
           </motion.p>
           <motion.div {...rise(0.65)} className="flex flex-wrap gap-3">
             <a
               href="#servicios"
               className="inline-flex min-h-12 items-center rounded-full bg-pina px-7 text-lg font-bold text-bosque-900 transition hover:bg-pina-claro hover:shadow-lg hover:shadow-pina/30"
             >
-              Procesos
+              {t.hero.primary}
             </a>
             <a
               href="#contacto"
               className="inline-flex min-h-12 items-center rounded-full border-2 border-white/80 px-7 text-lg font-bold text-white transition hover:bg-white hover:text-bosque"
             >
-              Contacto
+              {t.hero.secondary}
             </a>
           </motion.div>
         </div>
