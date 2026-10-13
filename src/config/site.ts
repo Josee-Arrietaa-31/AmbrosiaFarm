@@ -25,11 +25,12 @@ export const SITE = {
   instagramUrl: 'https://www.instagram.com/ambrosiafreshcr',
 
   mapEmbedUrl:
-    'https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d245.32098321202358!2d-84.43100012425005!3d10.33102108155489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d10.3311289!2d-84.4309565!4m3!3m2!1d10.3311283!2d-84.43095919999999!5e0!3m2!1ses!2scr!4v1790116895562!5m2!1ses!2scr',
+    'https://www.google.com/maps/embed?pb=!4v1791822424044!6m8!1m7!1ssZyHN4NOiedkfKXns4NYFQ!2m2!1d10.3311028820277!2d-84.4308646727193!3f271.5593077812105!4f-0.48128178548383005!5f0.7820865974627469',
 
-  // PLACEHOLDER: endpoint del formulario (por ejemplo "https://formspree.io/f/xxxxxxx").
-  // También puede definirse con la variable de entorno VITE_FORM_ENDPOINT.
-  formEndpoint: (import.meta.env.VITE_FORM_ENDPOINT as string | undefined) ?? '',
+  // En producción el formulario lo procesa public/contacto.php en el cPanel (Vite no ejecuta PHP,
+  // así que en desarrollo se simula el envío). Se puede cambiar con la variable VITE_FORM_ENDPOINT.
+  formEndpoint:
+    (import.meta.env.VITE_FORM_ENDPOINT as string | undefined) ?? (import.meta.env.PROD ? '/contacto.php' : ''),
 } as const
 
 export const whatsappHref = SITE.whatsappNumber
@@ -55,7 +56,6 @@ if (import.meta.env.DEV) {
     facebookUrl: SITE.facebookUrl,
     instagramUrl: SITE.instagramUrl,
     mapEmbedUrl: SITE.mapEmbedUrl,
-    formEndpoint: SITE.formEndpoint,
   })
     .filter(([, v]) => !v)
     .map(([k]) => k)

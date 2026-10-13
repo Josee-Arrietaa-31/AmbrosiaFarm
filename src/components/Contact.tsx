@@ -5,7 +5,8 @@ import { SITE, facebookHref, instagramHref } from '../config/site'
 import { Facebook, Instagram } from './BrandIcons'
 import { Reveal } from './Reveal'
 
-type FormValues = { nombre: string; correo: string; telefono?: string; mensaje: string }
+// `sitio` es un campo trampa oculto: si llega con valor, contacto.php lo trata como spam.
+type FormValues = { nombre: string; correo: string; telefono?: string; mensaje: string; sitio?: string }
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
 const inputBase =
@@ -21,11 +22,22 @@ async function sendForm(data: FormValues) {
     }
     throw new Error('El formulario aún no tiene un servicio de envío configurado.')
   }
-  const res = await fetch(SITE.formEndpoint, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify(data),
-  })
+  const post = () =>
+    fetch(SITE.formEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data),
+    })
+  let res = await post()
+  // El filtro antibots del hosting responde 409 con un script que pone una cookie y recarga la página.
+  // Dentro de fetch ese script no corre, así que se pone la cookie a mano y se reintenta una vez.
+  if (res.status === 409) {
+    const cookie = (await res.text()).match(/document\.cookie\s*=\s*"([^"]+)"/)?.[1]
+    if (cookie) {
+      document.cookie = `${cookie}; path=/`
+      res = await post()
+    }
+  }
   if (!res.ok) throw new Error(`El servidor respondió con el código ${res.status}.`)
 }
 
@@ -232,6 +244,11 @@ export function Contact() {
                   </p>
                 )}
               </div>
+            </div>
+
+            <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+              <label htmlFor="sitio">No llene este campo</label>
+              <input id="sitio" type="text" tabIndex={-1} autoComplete="off" {...register('sitio')} />
             </div>
 
             <button
